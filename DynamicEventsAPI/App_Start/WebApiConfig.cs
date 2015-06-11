@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace Dynamic_Events_API
@@ -16,9 +17,13 @@ namespace Dynamic_Events_API
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            JsonMediaTypeFormatter formatter = new JsonMediaTypeFormatter();
+            config.Formatters.Clear();
+            config.Formatters.Add(formatter);
         }
     }
 }
