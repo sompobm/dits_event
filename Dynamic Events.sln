@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic Events Web", "Dynam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic Events API", "DynamicEventsAPI\Dynamic Events API.csproj", "{8DF06FA6-FFEE-4BA1-9DF5-E32BFEFA7D45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamic Event Data", "DynamicEventData\Dynamic Event Data.csproj", "{F68F7350-F6C0-44CA-9838-1EE509FE103D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8DF06FA6-FFEE-4BA1-9DF5-E32BFEFA7D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF06FA6-FFEE-4BA1-9DF5-E32BFEFA7D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF06FA6-FFEE-4BA1-9DF5-E32BFEFA7D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F68F7350-F6C0-44CA-9838-1EE509FE103D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F68F7350-F6C0-44CA-9838-1EE509FE103D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F68F7350-F6C0-44CA-9838-1EE509FE103D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F68F7350-F6C0-44CA-9838-1EE509FE103D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
