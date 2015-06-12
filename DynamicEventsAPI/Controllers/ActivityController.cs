@@ -33,5 +33,20 @@ namespace Dynamic_Events_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        [ResponseType(typeof(List<ActivityModel>))]
+        public async Task<IHttpActionResult> CheckStatus(string barcodeNo)
+        {
+            try
+            {
+                IQueryable<ActivityModel> query = await ActivityModel.CheckStatus(barcodeNo);
+                return Ok(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

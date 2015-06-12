@@ -80,6 +80,7 @@
     <Content Include="Modules\Master\Activity.aspx" />
     <Content Include="Modules\Master\Company.aspx" />
     <Content Include="Modules\Master\Employee.aspx" />
+    <Content Include="Modules\Operation\ActivityCheckList.aspx" />
     <Content Include="Modules\Operation\BarcodeManage.aspx" />
     <Content Include="packages.config" />
     <Content Include="App_Readme\Ext.NET\Sample.Web.config" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="Modules\Master\Zone.aspx.designer.cs">
       <DependentUpon>Zone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Operation\ActivityCheckList.aspx.cs">
+      <DependentUpon>ActivityCheckList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Operation\ActivityCheckList.aspx.designer.cs">
+      <DependentUpon>ActivityCheckList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Operation\BarcodeManage.aspx.cs">
       <DependentUpon>BarcodeManage.aspx</DependentUpon>
