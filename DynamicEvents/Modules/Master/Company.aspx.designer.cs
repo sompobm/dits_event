@@ -10,7 +10,7 @@
 namespace Dynamic_Events.Modules.Master {
     
     
-    public partial class Zone {
+    public partial class Company {
         
         /// <summary>
         /// form1 control.
@@ -74,24 +74,6 @@ namespace Dynamic_Events.Modules.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.RowNumbererColumn RowNumbererColumn1;
-        
-        /// <summary>
-        /// colZoneNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Column colZoneNo;
-        
-        /// <summary>
-        /// colZoneName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Column colZoneName;
         
         /// <summary>
         /// colCompanyNo control.
@@ -164,24 +146,6 @@ namespace Dynamic_Events.Modules.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.FormPanel FormDetail;
-        
-        /// <summary>
-        /// txtZoneNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtZoneNo;
-        
-        /// <summary>
-        /// txtZoneName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtZoneName;
         
         /// <summary>
         /// txtCompanyNo control.

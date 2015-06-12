@@ -17,8 +17,8 @@ namespace Dynamic_Events_API
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{action}"
+                //defaults: new { id = RouteParameter.Optional }
             );
 
             JsonMediaTypeFormatter formatter = new JsonMediaTypeFormatter();

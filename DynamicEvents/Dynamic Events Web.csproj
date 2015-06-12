@@ -77,6 +77,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Modules\Master\Activity.aspx" />
+    <Content Include="Modules\Master\Company.aspx" />
+    <Content Include="Modules\Master\Employee.aspx" />
+    <Content Include="Modules\Operation\BarcodeManage.aspx" />
     <Content Include="packages.config" />
     <Content Include="App_Readme\Ext.NET\Sample.Web.config" />
     <None Include="Web.Debug.config">
@@ -102,6 +106,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\Master\Activity.aspx.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Master\Activity.aspx.designer.cs">
+      <DependentUpon>Activity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Master\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Master\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Master\Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Master\Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Master\Zone.aspx.cs">
       <DependentUpon>Zone.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -109,12 +134,18 @@
     <Compile Include="Modules\Master\Zone.aspx.designer.cs">
       <DependentUpon>Zone.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Operation\BarcodeManage.aspx.cs">
+      <DependentUpon>BarcodeManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Operation\BarcodeManage.aspx.designer.cs">
+      <DependentUpon>BarcodeManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commons\" />
     <Folder Include="Downloads\" />
-    <Folder Include="Modules\Operation\" />
     <Folder Include="Modules\Report\" />
     <Folder Include="Resources\" />
   </ItemGroup>

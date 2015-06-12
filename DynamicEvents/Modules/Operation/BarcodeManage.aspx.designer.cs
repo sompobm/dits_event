@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Dynamic_Events.Modules.Master {
+namespace Dynamic_Events.Modules.Operation {
     
     
-    public partial class Zone {
+    public partial class BarcodeManage {
         
         /// <summary>
         /// form1 control.
@@ -76,40 +76,31 @@ namespace Dynamic_Events.Modules.Master {
         protected global::Ext.Net.RowNumbererColumn RowNumbererColumn1;
         
         /// <summary>
-        /// colZoneNo control.
+        /// colBarcodeNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Column colZoneNo;
+        protected global::Ext.Net.Column colBarcodeNo;
         
         /// <summary>
-        /// colZoneName control.
+        /// colEmpName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Column colZoneName;
+        protected global::Ext.Net.Column colEmpName;
         
         /// <summary>
-        /// colCompanyNo control.
+        /// colIsActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Column colCompanyNo;
-        
-        /// <summary>
-        /// colCompanyName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Column colCompanyName;
+        protected global::Ext.Net.CheckColumn colIsActive;
         
         /// <summary>
         /// PagingTbar control.
@@ -166,40 +157,40 @@ namespace Dynamic_Events.Modules.Master {
         protected global::Ext.Net.FormPanel FormDetail;
         
         /// <summary>
-        /// txtZoneNo control.
+        /// txtEmpId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtZoneNo;
+        protected global::Ext.Net.TextField txtEmpId;
         
         /// <summary>
-        /// txtZoneName control.
+        /// txtBarcodeNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtZoneName;
+        protected global::Ext.Net.TextField txtBarcodeNo;
         
         /// <summary>
-        /// txtCompanyNo control.
+        /// txtEmpName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCompanyNo;
+        protected global::Ext.Net.TextField txtEmpName;
         
         /// <summary>
-        /// txtCompanyName control.
+        /// chkIsActive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCompanyName;
+        protected global::Ext.Net.Checkbox chkIsActive;
         
         /// <summary>
         /// toolbarControls control.

@@ -5,19 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="878d9f4f54754c1ebb9998191ec8937d" Name="Diagram1">
-        <EntityTypeShape EntityType="DITS_EventModel.M_Activity" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.M_Barcode" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.M_Company" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.M_Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.M_UserLogon" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.sysdiagram" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.T_Activity" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.T_News" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DITS_EventModel.T_Zone" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
-        <AssociationConnector Association="DITS_EventModel.FK_T_Activity_M_Activity" ManuallyRouted="false" />
-        <AssociationConnector Association="DITS_EventModel.FK_M_Barcode_M_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="DITS_EventModel.FK_T_Activity_M_Barcode" ManuallyRouted="false" />
-        <AssociationConnector Association="DITS_EventModel.FK_M_Employee_M_Company" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DITS_EventModel.M_Activity" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DITS_EventModel.M_Barcode" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="DITS_EventModel.M_Company" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="DITS_EventModel.M_Employee" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DITS_EventModel.M_UserLogon" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DITS_EventModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DITS_EventModel.T_Activity" Width="1.5" PointX="7.5" PointY="1.125" />
+        <EntityTypeShape EntityType="DITS_EventModel.T_News" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DITS_EventModel.T_Zone" Width="1.5" PointX="4.75" PointY="7.75" />
+        <AssociationConnector Association="DITS_EventModel.FK_M_Barcode_M_Employee" />
+        <AssociationConnector Association="DITS_EventModel.FK_T_Activity_M_Barcode" />
+        <AssociationConnector Association="DITS_EventModel.FK_M_Employee_M_Company" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Zone.aspx.cs" Inherits="Dynamic_Events.Modules.Master.Zone" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Activity.aspx.cs" Inherits="Dynamic_Events.Modules.Master.Activity" %>
 
 <!DOCTYPE html>
 
@@ -24,23 +24,22 @@
                     <Store>
                         <ext:Store ID="storeDetail" runat="server" PageSize="20" RemotePaging="true" RemoteSort="true">
                             <Proxy>
-                                <ext:AjaxProxy Url="http://localhost/DynamicEventsAPI/api/Zone/Get" >
+                                <ext:AjaxProxy Url="http://localhost/DynamicEventsAPI/api/Activity/Get">
                                     <Reader>
                                         <ext:JsonReader RootProperty="data" />
                                     </Reader>
                                 </ext:AjaxProxy>
                             </Proxy>
                             <Sorters>
-                                <ext:DataSorter Property="ZoneNo" />
+                                <ext:DataSorter Property="ActivityNo" />
                             </Sorters>
                             <%--OnReadData="StoreDriver_Refresh">--%>
                             <Model>
                                 <ext:Model ID="Model" runat="server">
                                     <Fields>
-                                        <ext:ModelField Name="ZoneNo" />
-                                        <ext:ModelField Name="ZoneName" />
-                                        <ext:ModelField Name="CompanyNo" />
-                                        <ext:ModelField Name="CompanyName" />
+                                        <ext:ModelField Name="ActivityNo" />
+                                        <ext:ModelField Name="ActivityName" />
+                                        <ext:ModelField Name="IsActive" />
                                     </Fields>
                                 </ext:Model>
                             </Model>
@@ -49,10 +48,9 @@
                     <ColumnModel ID="ColumnModel1" runat="server">
                         <Columns>
                             <ext:RowNumbererColumn ID="RowNumbererColumn1" runat="server" Text="No" Width="60" Align="Center" />
-                            <ext:Column ID="colZoneNo" runat="server" DataIndex="ZoneNo" Text="Zone No" Flex="1" />
-                            <ext:Column ID="colZoneName" runat="server" DataIndex="ZoneName" Text="Zone Name" Flex="1" />
-                            <ext:Column ID="colCompanyNo" runat="server" DataIndex="CompanyNo" Text="Company No" Flex="1" />
-                            <ext:Column ID="colCompanyName" runat="server" DataIndex="CompanyName" Text="Company Name" Flex="1" />
+                            <ext:Column ID="colActivityNo" runat="server" DataIndex="ActivityNo" Text="Activity No" Flex="1" />
+                            <ext:Column ID="colActivityName" runat="server" DataIndex="ActivityName" Text="Activity Name" Flex="1" />
+                            <ext:CheckColumn ID="colIsActive" runat="server" DataIndex="IsActive" Text="Active" Flex="1" />
                         </Columns>
                     </ColumnModel>
                     <BottomBar>
@@ -87,16 +85,14 @@
                         </ext:RowSelectionModel>
 
                     </SelectionModel>
-                  
+
                 </ext:GridPanel>
                 <ext:FormPanel Icon="Group" runat="server" ID="FormDetail" Title="Details" Region="East"
                     Margins="5 5 5 5" BodyPadding="2" Frame="true" Width="300" AutoScroll="True" Split="true">
                     <Items>
-                        <ext:TextField ID="txtZoneNo" runat="server" FieldLabel="Zone No" Name="ZoneNo" Width="200" AllowBlank="false" />
-                        <ext:TextField ID="txtZoneName" runat="server" FieldLabel="Zone Name" Name="ZoneName" AllowBlank="false" />
-                        <ext:TextField ID="txtCompanyNo" runat="server" FieldLabel="Company No" Name="CompanyNo" />
-                        <ext:TextField ID="txtCompanyName" runat="server" FieldLabel="Company Name" Name="CoompanyName" />
-                       
+                        <ext:TextField ID="txtActivityNo" runat="server" FieldLabel="Activity No" Name="ActivityNo" Width="200" AllowBlank="false" />
+                        <ext:TextField ID="txtActivityName" runat="server" FieldLabel="Activity Name" Name="ActivityName" AllowBlank="false" />
+                        <ext:Checkbox ID="chkIsActive" runat="server" BoxLabel="ใช้งาน" ColSpan="2" MarginSpec="0 0 0 85" Name="IsActive" />
                     </Items>
                     <BottomBar>
                         <ext:Toolbar runat="server" ID="toolbarControls">

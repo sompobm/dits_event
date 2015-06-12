@@ -14,15 +14,8 @@ namespace Dynamic_Event_Data
     
     public partial class M_Activity
     {
-        public M_Activity()
-        {
-            this.T_Activity = new HashSet<T_Activity>();
-        }
-    
         public string ActivityNo { get; set; }
         public string ActivityName { get; set; }
         public Nullable<bool> IsActive { get; set; }
-    
-        public virtual ICollection<T_Activity> T_Activity { get; set; }
     }
 }

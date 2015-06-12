@@ -10,7 +10,7 @@
 namespace Dynamic_Events.Modules.Master {
     
     
-    public partial class Zone {
+    public partial class Employee {
         
         /// <summary>
         /// form1 control.
@@ -76,31 +76,22 @@ namespace Dynamic_Events.Modules.Master {
         protected global::Ext.Net.RowNumbererColumn RowNumbererColumn1;
         
         /// <summary>
-        /// colZoneNo control.
+        /// colEmpCardNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Column colZoneNo;
+        protected global::Ext.Net.Column colEmpCardNo;
         
         /// <summary>
-        /// colZoneName control.
+        /// colEmpName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Column colZoneName;
-        
-        /// <summary>
-        /// colCompanyNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Column colCompanyNo;
+        protected global::Ext.Net.Column colEmpName;
         
         /// <summary>
         /// colCompanyName control.
@@ -166,22 +157,31 @@ namespace Dynamic_Events.Modules.Master {
         protected global::Ext.Net.FormPanel FormDetail;
         
         /// <summary>
-        /// txtZoneNo control.
+        /// txtEmpId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtZoneNo;
+        protected global::Ext.Net.TextField txtEmpId;
         
         /// <summary>
-        /// txtZoneName control.
+        /// txtEmpCardNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtZoneName;
+        protected global::Ext.Net.TextField txtEmpCardNo;
+        
+        /// <summary>
+        /// txtEmpName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtEmpName;
         
         /// <summary>
         /// txtCompanyNo control.

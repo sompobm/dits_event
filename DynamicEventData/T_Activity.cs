@@ -23,7 +23,6 @@ namespace Dynamic_Event_Data
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
     
-        public virtual M_Activity M_Activity { get; set; }
         public virtual M_Barcode M_Barcode { get; set; }
     }
 }

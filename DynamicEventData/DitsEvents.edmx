@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DITS_EventModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DITS_EventModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="M_Activity">
           <Key>
             <PropertyRef Name="ActivityNo" />
@@ -133,18 +133,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_T_Activity_M_Activity">
-          <End Role="M_Activity" Type="Self.M_Activity" Multiplicity="1" />
-          <End Role="T_Activity" Type="Self.T_Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="M_Activity">
-              <PropertyRef Name="ActivityNo" />
-            </Principal>
-            <Dependent Role="T_Activity">
-              <PropertyRef Name="ActivityNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_T_Activity_M_Barcode">
           <End Role="M_Barcode" Type="Self.M_Barcode" Multiplicity="1" />
           <End Role="T_Activity" Type="Self.T_Activity" Multiplicity="*" />
@@ -175,55 +163,72 @@
             <End Role="M_Company" EntitySet="M_Company" />
             <End Role="M_Employee" EntitySet="M_Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_T_Activity_M_Activity" Association="Self.FK_T_Activity_M_Activity">
-            <End Role="M_Activity" EntitySet="M_Activity" />
-            <End Role="T_Activity" EntitySet="T_Activity" />
-          </AssociationSet>
           <AssociationSet Name="FK_T_Activity_M_Barcode" Association="Self.FK_T_Activity_M_Barcode">
             <End Role="M_Barcode" EntitySet="M_Barcode" />
             <End Role="T_Activity" EntitySet="T_Activity" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DITS_EventModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DITS_EventEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="M_Activity" EntityType="DITS_EventModel.M_Activity" />
+          <EntitySet Name="M_Barcode" EntityType="DITS_EventModel.M_Barcode" />
+          <EntitySet Name="M_Company" EntityType="DITS_EventModel.M_Company" />
+          <EntitySet Name="M_Employee" EntityType="DITS_EventModel.M_Employee" />
+          <EntitySet Name="M_UserLogon" EntityType="DITS_EventModel.M_UserLogon" />
+          <EntitySet Name="sysdiagrams" EntityType="DITS_EventModel.sysdiagram" />
+          <EntitySet Name="T_Activity" EntityType="DITS_EventModel.T_Activity" />
+          <EntitySet Name="T_News" EntityType="DITS_EventModel.T_News" />
+          <EntitySet Name="T_Zone" EntityType="DITS_EventModel.T_Zone" />
+          <AssociationSet Name="FK_M_Barcode_M_Employee" Association="DITS_EventModel.FK_M_Barcode_M_Employee">
+            <End Role="M_Employee" EntitySet="M_Employee" />
+            <End Role="M_Barcode" EntitySet="M_Barcode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Activity_M_Barcode" Association="DITS_EventModel.FK_T_Activity_M_Barcode">
+            <End Role="M_Barcode" EntitySet="M_Barcode" />
+            <End Role="T_Activity" EntitySet="T_Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_M_Employee_M_Company" Association="DITS_EventModel.FK_M_Employee_M_Company">
+            <End Role="M_Company" EntitySet="M_Company" />
+            <End Role="M_Employee" EntitySet="M_Employee" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="M_Activity">
           <Key>
             <PropertyRef Name="ActivityNo" />
           </Key>
-          <Property Name="ActivityNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivityNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ActivityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="T_Activity" Relationship="Self.FK_T_Activity_M_Activity" FromRole="M_Activity" ToRole="T_Activity" />
         </EntityType>
         <EntityType Name="M_Barcode">
           <Key>
             <PropertyRef Name="BarcodeNo" />
           </Key>
-          <Property Name="BarcodeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BarcodeNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EmpId" Type="Int32" />
           <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="M_Employee" Relationship="Self.FK_M_Barcode_M_Employee" FromRole="M_Barcode" ToRole="M_Employee" />
-          <NavigationProperty Name="T_Activity" Relationship="Self.FK_T_Activity_M_Barcode" FromRole="M_Barcode" ToRole="T_Activity" />
+          <NavigationProperty Name="M_Employee" Relationship="DITS_EventModel.FK_M_Barcode_M_Employee" FromRole="M_Barcode" ToRole="M_Employee" />
+          <NavigationProperty Name="T_Activity" Relationship="DITS_EventModel.FK_T_Activity_M_Barcode" FromRole="M_Barcode" ToRole="T_Activity" />
         </EntityType>
         <EntityType Name="M_Company">
           <Key>
             <PropertyRef Name="CompanyNo" />
           </Key>
-          <Property Name="CompanyNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="M_Employee" Relationship="Self.FK_M_Employee_M_Company" FromRole="M_Company" ToRole="M_Employee" />
+          <NavigationProperty Name="M_Employee" Relationship="DITS_EventModel.FK_M_Employee_M_Company" FromRole="M_Company" ToRole="M_Employee" />
         </EntityType>
         <EntityType Name="M_Employee">
           <Key>
@@ -238,8 +243,8 @@
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="M_Barcode" Relationship="Self.FK_M_Barcode_M_Employee" FromRole="M_Employee" ToRole="M_Barcode" />
-          <NavigationProperty Name="M_Company" Relationship="Self.FK_M_Employee_M_Company" FromRole="M_Employee" ToRole="M_Company" />
+          <NavigationProperty Name="M_Barcode" Relationship="DITS_EventModel.FK_M_Barcode_M_Employee" FromRole="M_Employee" ToRole="M_Barcode" />
+          <NavigationProperty Name="M_Company" Relationship="DITS_EventModel.FK_M_Employee_M_Company" FromRole="M_Employee" ToRole="M_Company" />
         </EntityType>
         <EntityType Name="M_UserLogon">
           <Key>
@@ -258,7 +263,7 @@
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -269,16 +274,15 @@
             <PropertyRef Name="BarcodeNo" />
             <PropertyRef Name="ActivityNo" />
           </Key>
-          <Property Name="BarcodeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ActivityNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BarcodeNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ActivityDateTime" Type="DateTime" Precision="3" />
           <Property Name="CreatedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="M_Activity" Relationship="Self.FK_T_Activity_M_Activity" FromRole="T_Activity" ToRole="M_Activity" />
-          <NavigationProperty Name="M_Barcode" Relationship="Self.FK_T_Activity_M_Barcode" FromRole="T_Activity" ToRole="M_Barcode" />
+          <NavigationProperty Name="M_Barcode" Relationship="DITS_EventModel.FK_T_Activity_M_Barcode" FromRole="T_Activity" ToRole="M_Barcode" />
         </EntityType>
         <EntityType Name="T_News">
           <Key>
@@ -297,25 +301,13 @@
           <Key>
             <PropertyRef Name="ZoneNo" />
           </Key>
-          <Property Name="ZoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ZoneNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ZoneName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CompanyNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_T_Activity_M_Activity">
-          <End Role="M_Activity" Type="Self.M_Activity" Multiplicity="1" />
-          <End Role="T_Activity" Type="Self.T_Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="M_Activity">
-              <PropertyRef Name="ActivityNo" />
-            </Principal>
-            <Dependent Role="T_Activity">
-              <PropertyRef Name="ActivityNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_M_Barcode_M_Employee">
-          <End Role="M_Employee" Type="Self.M_Employee" Multiplicity="0..1" />
-          <End Role="M_Barcode" Type="Self.M_Barcode" Multiplicity="*" />
+          <End Type="DITS_EventModel.M_Employee" Role="M_Employee" Multiplicity="0..1" />
+          <End Type="DITS_EventModel.M_Barcode" Role="M_Barcode" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="M_Employee">
               <PropertyRef Name="EmpId" />
@@ -326,8 +318,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_T_Activity_M_Barcode">
-          <End Role="M_Barcode" Type="Self.M_Barcode" Multiplicity="1" />
-          <End Role="T_Activity" Type="Self.T_Activity" Multiplicity="*" />
+          <End Type="DITS_EventModel.M_Barcode" Role="M_Barcode" Multiplicity="1" />
+          <End Type="DITS_EventModel.T_Activity" Role="T_Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="M_Barcode">
               <PropertyRef Name="BarcodeNo" />
@@ -338,8 +330,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_M_Employee_M_Company">
-          <End Role="M_Company" Type="Self.M_Company" Multiplicity="0..1" />
-          <End Role="M_Employee" Type="Self.M_Employee" Multiplicity="*" />
+          <End Type="DITS_EventModel.M_Company" Role="M_Company" Multiplicity="0..1" />
+          <End Type="DITS_EventModel.M_Employee" Role="M_Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="M_Company">
               <PropertyRef Name="CompanyNo" />
@@ -349,33 +341,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DITS_EventEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="M_Activity" EntityType="Self.M_Activity" />
-          <EntitySet Name="M_Barcode" EntityType="Self.M_Barcode" />
-          <EntitySet Name="M_Company" EntityType="Self.M_Company" />
-          <EntitySet Name="M_Employee" EntityType="Self.M_Employee" />
-          <EntitySet Name="M_UserLogon" EntityType="Self.M_UserLogon" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="T_Activity" EntityType="Self.T_Activity" />
-          <EntitySet Name="T_News" EntityType="Self.T_News" />
-          <EntitySet Name="T_Zone" EntityType="Self.T_Zone" />
-          <AssociationSet Name="FK_T_Activity_M_Activity" Association="Self.FK_T_Activity_M_Activity">
-            <End Role="M_Activity" EntitySet="M_Activity" />
-            <End Role="T_Activity" EntitySet="T_Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_M_Barcode_M_Employee" Association="Self.FK_M_Barcode_M_Employee">
-            <End Role="M_Employee" EntitySet="M_Employee" />
-            <End Role="M_Barcode" EntitySet="M_Barcode" />
-          </AssociationSet>
-          <AssociationSet Name="FK_T_Activity_M_Barcode" Association="Self.FK_T_Activity_M_Barcode">
-            <End Role="M_Barcode" EntitySet="M_Barcode" />
-            <End Role="T_Activity" EntitySet="T_Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_M_Employee_M_Company" Association="Self.FK_M_Employee_M_Company">
-            <End Role="M_Company" EntitySet="M_Company" />
-            <End Role="M_Employee" EntitySet="M_Employee" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -385,112 +350,112 @@
           <EntitySetMapping Name="M_Activity">
             <EntityTypeMapping TypeName="DITS_EventModel.M_Activity">
               <MappingFragment StoreEntitySet="M_Activity">
-                <ScalarProperty Name="ActivityNo" ColumnName="ActivityNo" />
-                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="ActivityNo" ColumnName="ActivityNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="M_Barcode">
             <EntityTypeMapping TypeName="DITS_EventModel.M_Barcode">
               <MappingFragment StoreEntitySet="M_Barcode">
-                <ScalarProperty Name="BarcodeNo" ColumnName="BarcodeNo" />
-                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
-                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="BarcodeNo" ColumnName="BarcodeNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="M_Company">
             <EntityTypeMapping TypeName="DITS_EventModel.M_Company">
               <MappingFragment StoreEntitySet="M_Company">
-                <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="M_Employee">
             <EntityTypeMapping TypeName="DITS_EventModel.M_Employee">
               <MappingFragment StoreEntitySet="M_Employee">
-                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
-                <ScalarProperty Name="EmpCardNo" ColumnName="EmpCardNo" />
-                <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
-                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
-                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
+                <ScalarProperty Name="EmpCardNo" ColumnName="EmpCardNo" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="M_UserLogon">
             <EntityTypeMapping TypeName="DITS_EventModel.M_UserLogon">
               <MappingFragment StoreEntitySet="M_UserLogon">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserLogon" ColumnName="UserLogon" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserLogon" ColumnName="UserLogon" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DITS_EventModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="T_Activity">
             <EntityTypeMapping TypeName="DITS_EventModel.T_Activity">
               <MappingFragment StoreEntitySet="T_Activity">
-                <ScalarProperty Name="BarcodeNo" ColumnName="BarcodeNo" />
-                <ScalarProperty Name="ActivityNo" ColumnName="ActivityNo" />
-                <ScalarProperty Name="ActivityDateTime" ColumnName="ActivityDateTime" />
-                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="ActivityDateTime" ColumnName="ActivityDateTime" />
+                <ScalarProperty Name="ActivityNo" ColumnName="ActivityNo" />
+                <ScalarProperty Name="BarcodeNo" ColumnName="BarcodeNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="T_News">
             <EntityTypeMapping TypeName="DITS_EventModel.T_News">
               <MappingFragment StoreEntitySet="T_News">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Detail" ColumnName="Detail" />
-                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="T_Zone">
             <EntityTypeMapping TypeName="DITS_EventModel.T_Zone">
               <MappingFragment StoreEntitySet="T_Zone">
-                <ScalarProperty Name="ZoneNo" ColumnName="ZoneNo" />
-                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
                 <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="ZoneNo" ColumnName="ZoneNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
