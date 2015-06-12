@@ -16,8 +16,6 @@ namespace Dynamic_Events_API.Models
         public Nullable<System.DateTime> ActivityDateTime { get; set; }
         public Nullable<bool> IsStatus { get; set; }
 
-        public M_Employee EmployeeInfo { get; set; }
-
         public static async Task<IQueryable<M_Activity>> Get()
         {
             try
