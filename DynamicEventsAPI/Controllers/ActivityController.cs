@@ -19,6 +19,21 @@ namespace Dynamic_Events_API.Controllers
     {
         [HttpGet]
         [ResponseType(typeof(List<M_Activity>))]
+        public async Task<IHttpActionResult> Get()
+        {
+            try
+            {
+                IQueryable<M_Activity> query = await ActivityModel.Get();
+                return Ok(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(List<M_Activity>))]
         public async Task<IHttpActionResult> Get(int page, int start, int limit, string sort)
         {
             try
@@ -41,6 +56,21 @@ namespace Dynamic_Events_API.Controllers
             try
             {
                 IQueryable<ActivityModel> query = await ActivityModel.CheckStatus(barcodeNo);
+                return Ok(query.ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(List<ActivityModel>))]
+        public async Task<IHttpActionResult> UpdateStatus(string barcodeNo,string activityNo)
+        {
+            try
+            {
+                IQueryable<ActivityModel> query = await ActivityModel.UpdateStatus(barcodeNo, activityNo);
                 return Ok(query.ToList());
             }
             catch (Exception ex)

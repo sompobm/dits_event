@@ -91,7 +91,7 @@ namespace Dynamic_Events.Modules.Operation {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Column colActivityDate;
+        protected global::Ext.Net.DateColumn colActivityDate;
         
         /// <summary>
         /// colIsStatus control.

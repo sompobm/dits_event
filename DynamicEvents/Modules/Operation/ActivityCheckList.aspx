@@ -32,8 +32,8 @@
                                     <Fields>
                                         <ext:ModelField Name="ActivityNo" />
                                         <ext:ModelField Name="ActivityName" />
-                                        <ext:ModelField Name="ActivityDate" />
-                                        <ext:ModelField Name="IsStatus" />
+                                        <ext:ModelField Name="ActivityDateTime" />
+                                        <ext:ModelField Name="IsStatus"  />
                                     </Fields>
                                 </ext:Model>
                             </Model>
@@ -43,7 +43,8 @@
                         <Columns>
                             <ext:RowNumbererColumn ID="RowNumbererColumn1" runat="server" Text="No" Width="60" Align="Center" />
                             <ext:Column ID="colActivityName" runat="server" DataIndex="ActivityName" Text="Activity Name" Flex="1" />
-                            <ext:Column ID="colActivityDate" runat="server" DataIndex="ActivityDate" Text="Activity Date" Flex="1" />
+                            <ext:DateColumn ID="colActivityDate" runat="server" DataIndex="ActivityDateTime" 
+                                Text="Activity Date" Flex="1" Format="dd/MM/yyyy HH:mm:ss" />
                             <ext:CheckColumn ID="colIsStatus" runat="server" DataIndex="IsStatus" Text="Status" Flex="1" />
                         </Columns>
                     </ColumnModel>
